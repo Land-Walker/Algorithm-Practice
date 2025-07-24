@@ -10,7 +10,7 @@ Tags:
 
 Start Time: 19:34
 
-End Time:
+End Time: 20:30
 
 Link: [Q,217](https://leetcode.com/problems/contains-duplicate/description/)
 
@@ -71,7 +71,8 @@ public:
 1. Sort out numbers in nums
 2. Compare numbers in orders, no need to check the first & the last elements etc
 
-Time Complexity: O($n\liog n$)
+#### Complexity
+Time Complexity: O($n\log n$)
 Space Complexity: O(1) or O(n) depends on the sorting algorithms
 
 ### Solution 3: Hash Set
@@ -93,6 +94,16 @@ public:
 };
 '''
 
+- seen is the name of the unordered_set
+- single colon, :, is a member initializer
+    - it is used when the constructor definition to initialize member variables before the constructor body executes
+    - Particularly useful for:
+        - **Initializing const members**: const members must be initialized in the initializer list as they cannot be assigned a value later.
+        - **Initializing reference members**: Similar to const members, reference members must be initialized in the initializer list.
+        - **Calling base class constructors**: When a derived class constructor is called, the base class constructor is called in the initializer list.
+        - **Performance optimization**: For complex objects, initializing in the member initializer list can be more efficient than assigning values in the constructor body.
+
+#### Complexity
 Time Complexity: O(n)
 Space Complexity: O(n)
 
@@ -108,7 +119,13 @@ public:
     }
 };
 '''
+- .begin() & .end() refer to the first and end element in std::vector
+    - often use to represent the range of std::vector
+    - in this code, nums.begin(), nums.end() basically says to store all of its elements to unordered_set
 
+- Here, we cannot use unordered_map, which is often the most useful hash table
+    - This is because map needs keys for each value, which is meaningless & bad for space complexity
+
+#### Complexity
 Time Complexity: O(n)
 Space Complexity: O(n)
-
