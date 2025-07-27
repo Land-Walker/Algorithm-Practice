@@ -1,4 +1,4 @@
-# LeetCode Q.217 Contains Duplicate
+# LC Q.217 Contains Duplicate
 
 2025.07.24.
 
@@ -6,7 +6,7 @@ Difficulty: #easy
 
 Type of Algorithm: [Arrrays&Hashing]
 
-Tags:
+Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time: 19:34
 

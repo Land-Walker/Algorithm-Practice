@@ -1,4 +1,4 @@
-# LeetCode Q.Num Title
+# LC Q.Num Title
 
 2025.06.28.
 
@@ -6,7 +6,7 @@ Difficulty: #easy
 
 Type of Algorithm: []
 
-Tags:
+Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time:
 

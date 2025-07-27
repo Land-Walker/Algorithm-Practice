@@ -1,4 +1,4 @@
-# LeetCode Q.242 Valid Anagram
+# LC Q.242 Valid Anagram
 
 2025.07.27.
 
@@ -6,7 +6,7 @@ Difficulty: #easy
 
 Type of Algorithm: [Array&Hashing]
 
-Tags:
+Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time: 19:51 (1st try)
 
