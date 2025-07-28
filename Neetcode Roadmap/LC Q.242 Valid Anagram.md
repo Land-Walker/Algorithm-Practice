@@ -10,7 +10,7 @@ Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time: 19:51 (1st try) / 23:10 (2nd try)
 
-End Time: 20:19 (1st try) / 
+End Time: 20:19 (1st try) / 23:41 (2nd try)
 
 ## My Approaches
 
