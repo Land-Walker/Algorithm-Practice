@@ -8,9 +8,9 @@ Type of Algorithm: [Array&Hashing]
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time: 19:51 (1st try)
+Start Time: 19:51 (1st try) / 23:10 (2nd try)
 
-End Time: 20:19 (1st try)
+End Time: 20:19 (1st try) / 
 
 ## My Approaches
 
@@ -30,9 +30,10 @@ for today (7/27), lets end here for time constraint, and visit tmr.
 - std::advance
 - .insert()
 - .begin() for multiset pointer
+- how to directly sort string
 
 ### Submission Code 1
-'''cpp
+~~~cpp
 class Solution {
 public:
     bool isAnagram(string s, string t) {
@@ -53,17 +54,104 @@ public:
         return true;
     }
 };
-'''
+~~~
 Tried to use hash table, but failed due to error in pointer
 
 ### Submission Code 2
-
+~~~cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        std::sort(s.begin(), s.end());
+        std::sort(t.begin(), t.end());
+        if (s == t) {
+            return true;
+        }
+        return false;
+    }
+};
+~~~
+- use direct sorting of std::string
+- time taken to solve is 7ms, which is not ideal
 
 ## Solutions
 
-### Solution 1
+### Solution 1 (Sorting)
+Logic is basically the same, but this one optimized a bit more:
+~~~cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        std::sort(s.begin(), s.end());
+        std::sort(t.begin(), t.end());
+        return s == t;
+    }
+};
+~~~
+- improved time by 6ms
 
+Time Complexity: $O(n\log n+m\log m)$
+Space Complexity: $O(1)$ or $O(n+m)$ depends on the sorting algorithms
 
-### Solution 2
+### Solution 2 (Hash Map)
+In a hash map, store an individual character as a key & a frequency of it as a value
+~~~cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
 
+        unordered_map<char, int> countS;
+        unordered_map<char, int> countT;
+        for (int i = 0; i < s.length(); i++) {
+            countS[s[i]]++;
+            countT[t[i]]++;
+        }
+        return countS == countT;
+    }
+};
+~~~
+1. check if the length matches (make it faster a bit, not necessary)
+2. initialize countS & countT as an unordered map
+3. Increments the count of the character s[i] in countS 
+    - If the character isn’t in the map yet, it’s added with an initial count of 1
+4. Do similar thing for countT
+5. Returns the comparison result
 
+Time Complexity: $O(n+m)$
+Space Complexity: $O(1)$
+
+### Solution 3 (Hash Map using array)
+The concept is the same with solution 2, but using array instead of hashmap
+
+~~~cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        vector<int> count(26, 0);
+        for (int i = 0; i < s.length(); ++i) {
+            count[s[i] - 'a']++;
+            count[t[i] - 'a']--;
+        }
+
+        for (int val : count) {
+            if (val != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+~~~
+- this checks if s and t match by adding number of alphabet in s, and substracting number of alphabet in s.
+- by finally checking if the count is zero for all alphabet, it works
+- not detailed explanation, since this solution is pretty bad compared to solution 2 (personal thought)
+
+Time Complexity: $O(n+m)$
+Space Complexity: $O(1)$

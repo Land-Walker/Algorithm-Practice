@@ -26,7 +26,7 @@ Common mistakes:
 3. overflow due to wrong for loop range setting
 
 ### Submission Code 1
-'''cpp
+~~~cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -39,7 +39,7 @@ public:
         return false;
     }
 };
-'''
+~~~
 
 Passed 70/77 cases / Failed due to Time Limit Exceed
 
@@ -53,7 +53,7 @@ Time Complexity: O($n^2$)
 Space Complexity: O(1)
 
 ### Solution 2: Sorting
-'''cpp
+~~~cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -66,7 +66,7 @@ public:
         return false;
     }
 };
-'''
+~~~
 
 1. Sort out numbers in nums
 2. Compare numbers in orders, no need to check the first & the last elements etc
@@ -78,7 +78,7 @@ Space Complexity: O(1) or O(n) depends on the sorting algorithms
 ### Solution 3: Hash Set
 [[AlgorithmSelfStudy^Hash Set|Here]] is the explanation of what hash set is.
 
-'''cpp
+~~~cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -92,7 +92,7 @@ public:
         return false;
     }
 };
-'''
+~~~
 
 - seen is the name of the unordered_set
 - single colon, :, is a member initializer
@@ -111,14 +111,14 @@ Space Complexity: O(n)
 Using hash set, create the list of non-overlapping elements.
 By comparing the length of the hash set and the length of nums, we can easily found out if there is an overlapping element.
 
-'''cpp
+~~~cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         return unordered_set<int>(nums.begin(), nums.end()).size() < nums.size();
     }
 };
-'''
+~~~
 - .begin() & .end() refer to the first and end element in std::vector
     - often use to represent the range of std::vector
     - in this code, nums.begin(), nums.end() basically says to store all of its elements to unordered_set
