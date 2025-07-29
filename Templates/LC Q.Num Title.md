@@ -17,11 +17,10 @@ End Time:
 ### Basic Ideas
 
 
-### What I found out to code the approach
-
-
 ### Submission Code 1
 
+
+### What I found out to code the approach
 
 
 ## Solutions

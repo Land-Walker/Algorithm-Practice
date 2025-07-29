@@ -19,7 +19,7 @@ General work flow will be:
 - O(log n) insertion, deletion, and lookup
 - Based on balanced binary search tree (typically red-black tree)
 
-```cpp
+~~~cpp
 #include <set>
 std::set<int> s = {3, 1, 4, 1, 5, 1};
 // Result: {1, 3, 4, 5} - sorted, duplicates removed
@@ -27,7 +27,7 @@ s.insert(2);
 if (s.find(4) != s.end()) {
     std::cout << "Found 4!";
 }
-```
+~~~
 
 #### std::multiset
 **Ordered container that allows duplicate elements**
@@ -35,13 +35,13 @@ if (s.find(4) != s.end()) {
 - Allows multiple copies of the same value
 - Based on balanced binary search tree (typically red-black tree)
 
-```cpp
+~~~cpp
 #include <set>
 std::multiset<int> ms = {3, 1, 4, 1, 5, 1};
 // Result: {1, 1, 1, 3, 4, 5} - sorted with duplicates
 ms.insert(2);
 std::cout << ms.count(1); // Output: 3
-```
+~~~
 
 #### std::unordered_set
 **Hash table for unique elements with fast access**
@@ -50,7 +50,7 @@ std::cout << ms.count(1); // Output: 3
 - Average O(1) insertion, deletion, and lookup
 - Based on hash table
 
-```cpp
+~~~cpp
 #include <unordered_set>
 std::unordered_set<std::string> us = {"apple", "banana", "cherry"};
 us.insert("date");
@@ -58,7 +58,7 @@ if (us.find("apple") != us.end()) {
     std::cout << "Found apple!";
 }
 // Elements stored in arbitrary order
-```
+~~~
 
 #### std::map
 **Ordered key-value pairs with unique keys**
@@ -67,7 +67,7 @@ if (us.find("apple") != us.end()) {
 - O(log n) operations
 - Based on balanced binary search tree
 
-```cpp
+~~~cpp
 #include <map>
 std::map<std::string, int> ages;
 ages["Alice"] = 25;
@@ -75,7 +75,7 @@ ages["Bob"] = 30;
 ages["Charlie"] = 35;
 // Keys stored in alphabetical order: Alice, Bob, Charlie
 std::cout << ages["Bob"]; // Output: 30
-```
+~~~
 
 #### std::unordered_map
 **Hash table for key-value pairs with fast access**
@@ -85,7 +85,7 @@ std::cout << ages["Bob"]; // Output: 30
 - Based on hash table
 - Use most often
 
-```cpp
+~~~cpp
 #include <unordered_map>
 std::unordered_map<int, std::string> lookup;
 lookup[101] = "John";
@@ -95,7 +95,7 @@ lookup[350] = "Bob";
 if (lookup.find(101) != lookup.end()) {
     std::cout << lookup[101]; // Output: John
 }
-```
+~~~
 
 #### Quick Comparison
 - **Ordered**: `std::set`, `std::multiset`, `std::map` (O(log n) operations)
