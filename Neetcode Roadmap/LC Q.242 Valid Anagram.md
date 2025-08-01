@@ -24,7 +24,6 @@ need to do first method instead, and check if direct string sorting is possible
 
 for today (7/27), lets end here for time constraint, and visit tmr.
 
-
 ### What I found out to code the approach
 - how to slice string
 - std::advance

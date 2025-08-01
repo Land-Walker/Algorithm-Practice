@@ -1,6 +1,6 @@
 # LC Q.49 Group Anagrams
 
-2025.06.28.
+2025.07.31. / 08.01 / 08.02
 
 Difficulty: #easy
 
@@ -8,9 +8,9 @@ Type of Algorithm: [Array&Hashing]
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time: 23:03 (1st try)
+Start Time: 23:03 (1st try) 23:32 (2nd try)
 
-End Time: 23:37 (1st try)
+End Time: 23:37 (1st try) 23:52 (2nd try)
 
 ## My Approaches
 
@@ -53,8 +53,38 @@ public:
 - I think the key maybe Q.242 soltion 3.
 - using array, this quesiton will be easy & can use hashmap, making necessary searching process much faster
 
-### What I found out to code the approach
+### What I found out to code the approach 1
 - how to add vector to vector
+
+### Submission Code 2
+~~~cpp
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        std::vector<std::vector<std::string>> fullResult = {};
+        std::vector<std::string> result = {};
+        std::vector<int> count(26,0);
+        for (int i{0}; i < strs.size(); ++i){
+            result.insert(result.end(), strs[i]);
+                for (int j{1}; j < strs.size()-1; ++j){
+                    std:string s = strs[i];
+                    std::string t = strs[j];
+                    count[s[i] - 'a']++;
+                    count[t[i] - 'a']--;
+
+            fullResult.push_back(result);
+            result.clear()
+        }
+        return fullResult;
+    }
+};
+~~~
+
+### What I found out to code the approach 2
+- try to apply solution 3, but thought it wont work as this solution faces the exact same problem as before
+- think there will be some technique that I dont know yet.
+- Yeah, there was something called hash table & some different kind of algorithm that uses sorting in other way
+- will summarize & study solutions tmr. 
 
 ## Solutions
 
