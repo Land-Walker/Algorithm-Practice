@@ -18,7 +18,9 @@ End Time:
 
 
 ### Submission Code 1
+~~~cpp
 
+~~~
 
 ### What I found out to code the approach
 
@@ -26,17 +28,23 @@ End Time:
 ## Solutions
 
 ### Solution 1
+~~~cpp
 
-
+~~~
 
 Time Complexity: 
 Space Complexity: 
 
 ### Solution 2
+~~~cpp
 
+~~~
 
 Time Complexity: 
 Space Complexity: 
 
 ### Challenge Solution
 If I get more confident with C++, read this part & try to learn its technique
+~~~cpp
+
+~~~
