@@ -2,7 +2,7 @@
 
 2025.07.31. / 08.01 / 08.02
 
-Difficulty: #easy
+Difficulty: #medium
 
 Type of Algorithm: [Array&Hashing]
 
