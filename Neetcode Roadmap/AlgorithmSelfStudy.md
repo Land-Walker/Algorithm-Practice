@@ -106,10 +106,13 @@ if (lookup.find(101) != lookup.end()) {
 
 ### Math
 
+## Sorting
+### C++
+#### Bucket Sort
 
-
-
-
+## Heap
+### C++
+#### std::priority_queue
 
 # Reference
 https://velog.io/@gb_leem/C-set-maphash

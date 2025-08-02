@@ -94,15 +94,15 @@ public:
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> res;      \it will store sorted string as a key, and a vector of its anagram strings as value 
-        for (const auto& s : strs) {                    \detail description below
-            string sortedS = s;                         \copy read-only s to sortedS
-            sort(sortedS.begin(), sortedS.end());       \sort string in sortedS
-            res[sortedS].push_back(s);                  \add sortedS as a key & add s to its value
+        unordered_map<string, vector<string>> res;      //it will store sorted string as a key, and a vector of its anagram strings as value 
+        for (const auto& s : strs) {                    //detail description below
+            string sortedS = s;                         //copy read-only s to sortedS
+            sort(sortedS.begin(), sortedS.end());       //sort string in sortedS
+            res[sortedS].push_back(s);                  //add sortedS as a key & add s to its value
         }
-        vector<vector<string>> result;                  \it will extract values from res to print desired result
-        for (auto& pair : res) {                        \detail description below
-            result.push_back(pair.second);              \detail despcription below 
+        vector<vector<string>> result;                  //it will extract values from res to print desired result
+        for (auto& pair : res) {                        //detail description below
+            result.push_back(pair.second);              //detail despcription below 
         }
         return result;
     }
@@ -132,17 +132,17 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         unordered_map<string, vector<string>> res;
         for (const auto& s : strs) {
-            vector<int> count(26, 0);               \build key string
+            vector<int> count(26, 0);               //build key string
             for (char c : s) {
-                count[c - 'a']++;                   \like Q242 solution 3, count frequency of each alphabet
+                count[c - 'a']++;                   //like Q242 solution 3, count frequency of each alphabet
             }
-            string key = to_string(count[0]);       \convert datatypes of values in count from int to string
+            string key = to_string(count[0]);       //convert datatypes of values in count from int to string
             for (int i = 1; i < 26; ++i) {
-                key += ',' + to_string(count[i]);   \add all frequencies of each alphabets to one long string connected with ', '
+                key += ',' + to_string(count[i]);   //add all frequencies of each alphabets to one long string connected with ', '
             }
             res[key].push_back(s);
         }
-        vector<vector<string>> result;              \same operation as before
+        vector<vector<string>> result;              //same operation as before
         for (const auto& pair : res) {
             result.push_back(pair.second);
         }

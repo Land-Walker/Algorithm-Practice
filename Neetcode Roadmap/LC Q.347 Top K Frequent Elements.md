@@ -78,26 +78,39 @@ class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> count;
-        for (int num : nums) {
+        for (int num : nums) {              //super simple way to add number (key) and its frequency (value) 
             count[num]++;
         }
 
         vector<pair<int, int>> arr;
-        for (const auto& p : count) {
+        for (const auto& p : count) {       //simple way to shift key / value position (but it is stored as vector instead of map)
             arr.push_back({p.second, p.first});
         }
-        sort(arr.rbegin(), arr.rend());
+        sort(arr.rbegin(), arr.rend());     //sort arr in reversing order, which is ascending order
 
         vector<int> res;
         for (int i = 0; i < k; ++i) {
-            res.push_back(arr[i].second);
+            res.push_back(arr[i].second);   //same as what I did, store result from sorted arr
         }
         return res;
     }
 };
 ~~~
 
-Time Complexity: $O(n\log n)$
+This is similar method to mine, but neater.
+Speed will be similar since this uses vector, while mine uses map but my code is longer
+Also, the for loop is used similarly, which largely impacts the speed.
+
+Nah, what I wrote there is wrong according to claude.
+**My code is significantly worse than the solution**:
+- Inefficient frequency counting: counting is unecessarily complex
+- Modifying map during iteration
+- Multiple passes: k is passed multiple times, makes hard to follow
+- Therefore, my code is slower and kinda terrible at managing.
+
+Yeap, totally agree.
+
+Time Complexity: $O(n\log n)$ (my code was $O(n\times m)$)
 Space Complexity: $O(n)$
 
 ### Solution 2 (Min-Heap)
@@ -105,7 +118,6 @@ Space Complexity: $O(n)$
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> count;
         for (int num : nums) {
             count[num]++;
@@ -125,7 +137,6 @@ public:
             heap.pop();
         }
         return res;
-        }
     }
 };
 ~~~
@@ -149,7 +160,7 @@ public:
         }
 
         vector<int> res;
-        for (int i = freq.size() - 1; i > 0; --i) {
+        for (int i = freq.size() - 1; i > 0; --i) { // decrement i to stop whenever res stored enough values
             for (int n : freq[i]) {
                 res.push_back(n);
                 if (res.size() == k) {
@@ -161,6 +172,11 @@ public:
     }
 };
 ~~~
+
+This is similar with solution 1, but improved speed by:
+- removing sorting process
+  - 
+  - using two for loops to find highest freq
 
 Time Complexity: O(n)
 Space Complexity: O(n)
