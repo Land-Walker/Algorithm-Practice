@@ -31,7 +31,7 @@ for today (7/27), lets end here for time constraint, and visit tmr.
 - .begin() for multiset pointer
 - how to directly sort string
 
-### Submission Code 1
+### Submission Code 1 (Failed)
 ~~~cpp
 class Solution {
 public:
@@ -56,7 +56,7 @@ public:
 ~~~
 Tried to use hash table, but failed due to error in pointer
 
-### Submission Code 2
+### Submission Code 2 (Solved w. hint)
 ~~~cpp
 class Solution {
 public:

@@ -17,7 +17,7 @@ End Time:
 ### Basic Ideas
 
 
-### Submission Code 1
+### Submission Code 1 ()
 ~~~cpp
 
 ~~~

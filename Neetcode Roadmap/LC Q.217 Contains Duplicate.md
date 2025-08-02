@@ -25,7 +25,7 @@ Common mistakes:
 2. define the scope of the for loop with {}
 3. overflow due to wrong for loop range setting
 
-### Submission Code 1
+### Submission Code 1 (Solved...?)
 ~~~cpp
 class Solution {
 public:

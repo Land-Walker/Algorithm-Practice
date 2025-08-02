@@ -24,7 +24,7 @@ End Time: 23:37 (1st try) 23:52 (2nd try) 16:33 (3rd try)
     - for string t loop, there must be a code to remove strings that are in the same anagram set
       - this was wrong, since remove strings will cause index problems
 
-### Submission Code 1
+### Submission Code 1 (Failed)
 ~~~cpp
 class Solution {
 public:
@@ -76,6 +76,7 @@ public:
             result.clear()
         }
         return fullResult;
+        }
     }
 };
 ~~~

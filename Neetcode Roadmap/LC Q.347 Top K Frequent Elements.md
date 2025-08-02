@@ -22,7 +22,7 @@ End Time: 18:02
     - iterate k times
 2. Sorting
 
-### Submission Code 1
+### Submission Code 1 (Solved!)
 ~~~cpp
 class Solution {
 public:

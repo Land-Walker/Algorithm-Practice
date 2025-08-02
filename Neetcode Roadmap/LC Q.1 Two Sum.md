@@ -20,7 +20,7 @@ End Time: 19:56
 
 One and only thing that pops up in my head without using two for loops
 
-### Submission Code 1
+### Submission Code 1 (Failed)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -43,7 +43,7 @@ Several things that I got wrong by Grok:
 5. No handling of the case where the same element shouldn't be used twice. (assumed in Q tho)
 6. Missing return statement for when no solution is found. (forgot to do :( )
 
-### Submission 2
+### Submission 2 (Solved w. Grok)
 ~~~cpp
 class Solution {
 public:
