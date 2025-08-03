@@ -118,28 +118,33 @@ Space Complexity: $O(n)$
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        // count frequency of each number
         unordered_map<int, int> count;
         for (int num : nums) {
             count[num]++;
         }
 
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> heap;
-        for (auto& entry : count) {
-            heap.push({entry.second, entry.first});
-            if (heap.size() > k) {
-                heap.pop();
+        // min heap of pairs (frequency, number)
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> heap; //min_heap creation
+        for (auto& entry : count) {                 
+            heap.push({entry.second, entry.first}); // add (frequency, number) to heap
+            if (heap.size() > k) {                  // If heap has more than k elements, remove the one with lowest frequency
+                heap.pop();                         // Removes the element with smallest frequency (top of min-heap)
             }
         }
 
         vector<int> res;
         for (int i = 0; i < k; i++) {
-            res.push_back(heap.top().second);
-            heap.pop();
+            res.push_back(heap.top().second);       // gets the number (not frequency)
+            heap.pop();                             // Remove this element from heap
         }
         return res;
     }
 };
 ~~~
+
+This guy is just a tree / filter, which automaically organizes key/value pair that you put in ascending / descending order.
+Pop literally pops the bubble located at the top or the root of the tree.
 
 Time Complexity: $O(n\log k)$
 Space Complexity: $O(n+k)$
@@ -149,20 +154,30 @@ Space Complexity: $O(n+k)$
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        // Place to count frequency of each number
         unordered_map<int, int> count;
-        vector<vector<int>> freq(nums.size() + 1);
 
+        // Create buckets for each possible frequency
+        vector<vector<int>> freq(nums.size() + 1);      // Size is nums.size() + 1 because max frequency = all elements are the same
+
+        // Count how many times each number appears
         for (int n : nums) {
             count[n] = 1 + count[n];
         }
+
+        // Put each number into the bucket corresponding to its frequency
         for (const auto& entry : count) {
-            freq[entry.second].push_back(entry.first);
+            freq[entry.second].push_back(entry.first);  // Put the number into the bucket at index = its frequency
         }
 
         vector<int> res;
+
+        //Collect results by going through buckets from highest frequency to lowest
         for (int i = freq.size() - 1; i > 0; --i) { // decrement i to stop whenever res stored enough values
-            for (int n : freq[i]) {
-                res.push_back(n);
+            for (int n : freq[i]) {                 // Process all numbers that have frequency i
+                res.push_back(n);                   // Add this number to our result
+
+                // Stop as soon as we have k numbers (the k most frequent)
                 if (res.size() == k) {
                     return res;
                 }
@@ -173,10 +188,7 @@ public:
 };
 ~~~
 
-This is similar with solution 1, but improved speed by:
-- removing sorting process
-  - 
-  - using two for loops to find highest freq
+Details about the bucket sort is in [[AlgorithmSelfStudy.md]]
 
 Time Complexity: O(n)
 Space Complexity: O(n)

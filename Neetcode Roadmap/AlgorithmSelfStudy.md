@@ -10,7 +10,7 @@ General work flow will be:
 
 # Algorithms
 
-## Hashing
+# Hashing
 ### C++
 #### std::set
 **Ordered container with unique elements**
@@ -106,13 +106,78 @@ if (lookup.find(101) != lookup.end()) {
 
 ### Math
 
-## Sorting
-### C++
-#### Bucket Sort
+# Sorting
+## Bucket Sort
+Instead of sorting things directly,
+1. create buckets (usually n * value / range) & put datas into each corresponding bucket
+2. sort each bucket
+3. combine all buckets
 
+**Time Complexity**
+- Best/Average Case: O(n + k) where n = elements, k = buckets
+- Worst Case: O(n²) when all elements go into one bucket
+- Space: O(n + k)
+
+**When to Use Bucket Sort**
+Good for:
+- Floating-point numbers in a known range
+- Uniformly distributed data
+- When you can predict the distribution pattern
+
+Not good for:
+- Data with unknown or wide ranges
+- Non-uniformly distributed data
+- Small datasets (overhead isn't worth it)
+
+### C++
+Look at Q347 for C++ Implementation
+
+# Data Structures
 ## Heap
+**Structure**: Complete binary tree - all levels are filled except possibly the last level, which is filled from left to right.
+
+**Property**: For any node at index i, its value ≤ values of its children.
+
+**Array Representation**
+For a node at index i:
+- Left child: 2*i + 1
+- Right child: 2*i + 2
+- Parent: (i-1)/2
+
+**Core Operations**
+- Insert (Push): Add element at the end, then "bubble up" by comparing with parent and swapping if necessary until heap property is restored.
+- Extract Min (Pop): Remove root, replace with last element, then "bubble down" by comparing with children and swapping with the smaller child until heap property is restored.
+- Peek: Return the root element (minimum) without removing it.
+
+**Time Complexities**
+- Insert: O(log n)
+- Extract Min: O(log n)
+- Peek: O(1)
+- Build heap from array: O(n)
+
 ### C++
 #### std::priority_queue
+To create min-heap:
+~~~cpp
+std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
+~~~
+
+To create max-heap:
+~~~cpp
+std::priority_queue<int> max_heap;
+~~~
+
+Operations:
+~~~cpp 
+bubbleUp(int index)    //Insertion
+
+bubbleDown(int index)  //Extraction
+
+//Navigation
+getParent(int index)
+getLeftChild(int index)
+getRightChild(int index)
+~~~
 
 # Reference
 https://velog.io/@gb_leem/C-set-maphash
@@ -125,7 +190,6 @@ Referred to The Alorithm repo in github:
 # Bit Manipulation
 # Ciphers
 # CPU Scheduling Algorithms
-# Data Structures
 # Divide & Conquer
 # Dynamic Programming
 # Games
@@ -142,6 +206,5 @@ Referred to The Alorithm repo in github:
 # Range Queries
 # Scripts
 # Searching
-# Sorting
 # Strings
 %%
