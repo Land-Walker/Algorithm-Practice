@@ -56,7 +56,7 @@ public:
 ### What I found out to code the approach 1
 - how to add vector to vector
 
-### Submission Code 2
+### Submission Code 2 (Failed)
 ~~~cpp
 class Solution {
 public:
