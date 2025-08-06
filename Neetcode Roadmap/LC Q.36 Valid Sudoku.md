@@ -1,6 +1,6 @@
 # LC Q.36 Valid Sudoku
 
-2025.06.28.
+2025.08.06.
 
 Difficulty: #medium
 
