@@ -179,6 +179,29 @@ getLeftChild(int index)
 getRightChild(int index)
 ~~~
 
+## Bitmask
+Definition: uses the individual bits of an integer as a compact way to store a set of boolean flags or represent subsets.
+
+Core Concept: Instead of using arrays, sets, or maps to track "presence/absence" of elements, you use bit positions in an integer.
+
+Analysis of Bitmask
+- Super fast:
+  - Bitwise operations are among fastest CPU instructions
+  - No cache misses from pointer chasing (a.k.a. memory efficient)
+  - Parallel operations on multiple bits
+
+- Operations: Set operations become bitwise operations
+  - Union: a | b
+  - Intersection: a & b
+  - Difference: a & ~b
+
+Classic Applications
+- Subset enumeration (your Sudoku solution)
+- Dynamic programming on subsets (TSP, assignment problems)
+- State compression in games/puzzles
+- Bloom filters and probabilistic data structures
+- Bit manipulation in competitive programming
+
 # Reference
 https://velog.io/@gb_leem/C-set-maphash
 https://velog.io/@gb_leem/C-list-stack-queue-heap

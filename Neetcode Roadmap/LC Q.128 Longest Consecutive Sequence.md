@@ -91,7 +91,7 @@ public:
         // nums are sorted & duplicate is removed.
         unordered_set<int> store(nums.begin(), nums.end());
 
-        // find logest consecutive sequence
+        // find longest consecutive sequence
         for (int num : nums) {
             int streak = 0, curr = num;
             while (store.find(curr) != store.end()) {   // loop until it meets unexpected number that is not consequtive
@@ -126,6 +126,7 @@ public:
 
         int res = 0, curr = nums[0], streak = 0, i = 0;
 
+        // find longest consecutive sequence
         while (i < nums.size()) {
             if (curr != nums[i]) {
                 curr = nums[i];
@@ -143,6 +144,10 @@ public:
 };
 ~~~
 
+I personally dont like this code.
+The core of the code, finding the consecutive sequence is hard to read or follow.
+But, in terms of time complexity, there is an improvement...
+
 Time Complexity: $O(n\log n)$
 Space Complexity: O(1) or O(n) depending on the sorting algorithm
 
@@ -154,10 +159,11 @@ public:
         unordered_set<int> numSet(nums.begin(), nums.end());
         int longest = 0;
 
+        // find longest consecutive sequence
         for (int num : numSet) {
-            if (numSet.find(num - 1) == numSet.end()) {
+            if (numSet.find(num - 1) == numSet.end()) {             // check if there is NO lower consecutive number in the set
                 int length = 1;
-                while (numSet.find(num + length) != numSet.end()) {
+                while (numSet.find(num + length) != numSet.end()) { // increment length & check if there is consecutive number in every iteration
                     length++;
                 }
                 longest = max(longest, length);
@@ -167,6 +173,11 @@ public:
     }
 };
 ~~~
+
+Interesting approach in finding longest consecutive sequence:
+- By checking if there is no lower consecutive number in the set, it can achieve:
+  - Skip meaningless iteration, therefore achieve better time complexity
+  - e.g. find 2,3,4,5 sequence in 1,2,3,4,5 set
 
 Time Complexity: O(n)
 Space Complexity: O(n)
@@ -180,17 +191,22 @@ public:
         int res = 0;
 
         for (int num : nums) {
-            if (!mp[num]) {
-                mp[num] = mp[num - 1] + mp[num + 1] + 1;
-                mp[num - mp[num - 1]] = mp[num];
-                mp[num + mp[num + 1]] = mp[num];
-                res = max(res, mp[num]);
+            if (!mp[num]) {         // Only process if this number hasn't been seen before
+                mp[num] = mp[num - 1] + mp[num + 1] + 1;    // Calculate the new sequence length by lower&upper bound sequence length + current char (= 1)
+                mp[num - mp[num - 1]] = mp[num];            // Update the left boundary endpoints of the merged sequence
+                mp[num + mp[num + 1]] = mp[num];            // Update the right boundary endpoints of the merged sequence
+                res = max(res, mp[num]);                    // Update the global maximum
             }
         }
         return res;
     }
 };
 ~~~
+
+For this solution as well, not quite sure if it is better than the solution 3.
+In terms of lines, yes, it is more concise.
+But in terms of time complexity and readability, I will use the solution 3 instead. (just personal preference...)
+(I think worse time complexity is coming from calculating left and right boundary for each iteration.)
 
 Time Complexity: O(n)
 Space Complexity: O(n)

@@ -92,7 +92,15 @@ One small thing was that to assign dot to char, I need to do '.', not "."...
 And do NOT forget to put reference not to make expensive copy!!!
 
 Some improvements that can be made advised by Claude are:
-- a
+**Code Quality Issues**:
+- Redundant comparisons: if (rowCheck == false) should be if (!rowCheck)
+- Inconsistent naming: subx is unclear (maybe subBox?)
+- Performance: Rebuilding column vectors is O(n²) when it could be O(n)
+- Memory inefficiency: Passing vectors by value creates unnecessary copies (use vector<char>&)
+
+**Style/Readability**:
+- Verbose conditionals: Multiple if (check == false) return false patterns
+- Mixed initialization styles: int i{0} vs standard int i = 0
 
 ## Solutions
 
@@ -138,7 +146,13 @@ public:
 ~~~
 
 Compared to my solution,
-- 
+- row & column check:
+  - I stored the whole vector to unordered map and then check the duplicates
+  - this code simply check the vector itself by:
+    - create unordered set named seen to store seen objects/cells
+    - every iteration check if the cell is already stored in seen or not
+- sub-box check:
+  - Basically same logic as me, but better method for checking duplicates
 
 Time Complexity: $O(n^2)$
 Space Complexity: $O(n^2)$
@@ -155,12 +169,16 @@ public:
             for (int c = 0; c < 9; c++) {
                 if (board[r][c] == '.') continue;
 
+                // Calculate which 3x3 box this cell belongs to
                 pair<int, int> squareKey = {r / 3, c / 3};
 
+                // Check if current digit violates ANY of the three Sudoku rules
+                // 1. Row check / 2. Column check / 3. Square check
                 if (rows[r].count(board[r][c]) || cols[c].count(board[r][c]) || squares[squareKey].count(board[r][c])) {
                     return false;
                 }
 
+                // record validated digits in all relevant sets
                 rows[r].insert(board[r][c]);
                 cols[c].insert(board[r][c]);
                 squares[squareKey].insert(board[r][c]);
@@ -171,6 +189,9 @@ public:
 };
 ~~~
 
+Damn, this is super elegant and clean solution...
+Actually, one of the best approaches to the problem that I've ever seen...
+
 Time Complexity: $O(n^2)$
 Space Complexity: $O(n^2)$
 
@@ -179,6 +200,7 @@ Space Complexity: $O(n^2)$
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
+        // use integers as bit arrays: Each bit position represents whether digit 1-9 has been seen
         int rows[9] = {0};
         int cols[9] = {0};
         int squares[9] = {0};
@@ -187,14 +209,17 @@ public:
             for (int c = 0; c < 9; ++c) {
                 if (board[r][c] == '.') continue;
 
+                // convert character to bit position
                 int val = board[r][c] - '1';
 
+                // Check if the bit for this digit is already set in any constraint
                 if ((rows[r] & (1 << val)) || (cols[c] & (1 << val)) ||
-                    (squares[(r / 3) * 3 + (c / 3)] & (1 << val))) {
+                    (squares[(r / 3) * 3 + (c / 3)] & (1 << val))) {        // & operation checks if that specific bit is already 1
                     return false;
                 }
 
-                rows[r] |= (1 << val);
+                // Set the bit for this digit in all relevant constraints
+                rows[r] |= (1 << val);                              // |= performs bitwise OR assignment (turns the bit ON)
                 cols[c] |= (1 << val);
                 squares[(r / 3) * 3 + (c / 3)] |= (1 << val);
             }
@@ -203,6 +228,10 @@ public:
     }
 };
 ~~~
+
+This is further improved version of solution 2.
+Instead of storing whole arrays, it simplifies to bits, which is why this is called 'bitmask'.
+This bitmask technique seems very useful, so I should memorize it... 
 
 Time Complexity: $O(n^2)$
 Space Complexity: $O(n)$
