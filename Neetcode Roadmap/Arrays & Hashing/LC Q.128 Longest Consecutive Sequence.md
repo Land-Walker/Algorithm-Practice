@@ -4,8 +4,6 @@
 
 Difficulty: #medium
 
-Type of Algorithm: [Array&Hashing]
-
 Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time: 22:53 (1st try)

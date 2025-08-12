@@ -4,8 +4,6 @@
 
 Difficulty: #easy
 
-Type of Algorithm: []
-
 Tags: #LeetCode #NeetCodeRoadmap
 
 Start Time:
