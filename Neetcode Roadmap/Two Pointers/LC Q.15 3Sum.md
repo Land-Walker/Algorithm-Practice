@@ -13,7 +13,7 @@ End Time: 23:37 (1st Try)
 ## My Approaches
 
 ### Basic Ideas
-
+Use two pointers like Q167.
 
 ### Submission Code 1 (Failed)
 ~~~cpp
