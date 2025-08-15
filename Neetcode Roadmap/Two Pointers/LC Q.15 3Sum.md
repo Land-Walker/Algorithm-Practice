@@ -1,14 +1,14 @@
 # LC Q.15 3Sum
 
-2025.08.13. / 08.14.
+2025.08.13. / 08.14. / 08.15.
 
-Difficulty: #easy
+Difficulty: #medium
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time: 22:50 (1st Try), 22:30 (2nd Try), 23:34 (3rd Try)
+Start Time: 22:50 (1st Try), 22:30 (2nd Try), 15:38 (3rd Try)
 
-End Time: 23:37 (1st Try), 23:23 (2nd Try), 
+End Time: 23:37 (1st Try), 23:23 (2nd Try), 16:07 (3rd Try)
 
 ## My Approaches
 
@@ -55,15 +55,9 @@ Some hints from Claude.ai:
 
 Since we only need unique triplet sets, we can simplify search by using set, deleting duplicates.
 
-Lets systematically deal issues that I have one by one in the next try...
+Lets  deal issues that I have one by one in the next try...
 
 ### Submission Code 2 - w. hints (TLE)
-Issue 1: this can be dealt with unordered_set or sort(). 
-- Since unordered_set deletes duplicates and sorts numbers, lets use set.
-
-Issue 2: Since numbers are ordered in set, it will be possible to use similar approach as Q167
-
-
 ~~~cpp
 class Solution {
 public:
@@ -154,31 +148,132 @@ Main reason for these might be removing duplicates in long vectors...
 
 Hint from claude:
 - Can I just skip duplicates during the pointing process?
+  - got close in 2nd try, but still fail in 210/314 test cases...
+
+### Submission Code 4 - w. Hints (Solved!)
+~~~cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<int> res;
+        vector<vector<int>> resVect;
+        int n = nums.size();
+
+        for (int i{0}; i < n; ++i) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int l = i + 1;
+            int r = n -1;
+
+            // two pointer
+            while (l < r) {
+                if (nums[i] + nums[r] + nums[l] < 0) {
+                    ++l;
+                } else if (nums[i] + nums[r] + nums[l]) {
+                    --r;
+                } else {
+                    res = {nums[i], nums[r], nums[l]};
+                    resVect.push_back(res);
+                    ++l;
+                    --r;
+                    while (l < r && l > 0 && nums[l] == nums[l - 1]) {
+                        ++l;
+                    }
+                    while (l < r && r < n-1 && nums[r] == nums[r + 1]) {
+                        --r;
+                }
+                }
+            }
+        }
+
+        return resVect;
+    }
+};
+~~~
+
+Few hints from claude, but it was mostly making sure my logic is correct & small mistakes that I missed...
+- e.g. use while instead of if to skip multiple duplicates
+
+Result)
+- Time complexity: $O(n^2)$, beats 73.44%
+- Space complexity: $O(n)$, beats 89.69%
+
+One thing that I note is that two pointer is faster/ more memory-efficient than the complexities represent.
 
 ### What I found out to code the approach
 - super simple way to remove duplicates
-- 
+- how/when to implement two pointers (what preparation is required to use two pointer technique, etc.)
 
 ## Solutions
-
-### Solution 1
+All solutions in here are for completeness.
+The optimal solution is two pointer, which is exactly same as my answer.
+- So, I only included non-two pointer solutions.
+- 
+### Solution 1 (Brute Force)
 ~~~cpp
-
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                for (int k = j + 1; k < nums.size(); k++) {
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        res.insert({nums[i], nums[j], nums[k]});
+                    }
+                }
+            }
+        }
+        return vector<vector<int>>(res.begin(), res.end());
+    }
+};
 ~~~
 
-Time Complexity: 
-Space Complexity: 
+Time Complexity: $O(n^3)$
+Space Complexity: O(m) (m = number of triplets)
 
-### Solution 2
+### Solution 2 (Hash Map)
 ~~~cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        unordered_map<int, int> count;
+        for (int num : nums) {
+            count[num]++;
+        }
 
+        vector<vector<int>> res;
+        for (int i = 0; i < nums.size(); i++) {
+            count[nums[i]]--;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            for (int j = i + 1; j < nums.size(); j++) {
+                count[nums[j]]--;
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int target = -(nums[i] + nums[j]);
+                if (count[target] > 0) {
+                    res.push_back({nums[i], nums[j], target});
+                }
+            }
+
+            for (int j = i + 1; j < nums.size(); j++) {
+                count[nums[j]]++;
+            }
+        }
+
+        return res;
+    }
+};
 ~~~
 
-Time Complexity: 
-Space Complexity: 
+Time Complexity: $O(n^2)$
+Space Complexity: O(n) (n = numbers of arrays)
 
 ### Challenge Solution
-If I get more confident with C++, read this part & try to learn its technique
-~~~cpp
-
-~~~
+NaN in leetcode solution page...
