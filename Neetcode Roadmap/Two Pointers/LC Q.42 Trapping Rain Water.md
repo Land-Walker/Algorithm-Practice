@@ -78,7 +78,7 @@ Yes...
 I GGed....
 
 ### What I found out to code the approach
-
+Nothing really, since it is mostly about how smart I can apply two pointers
 
 ## Solutions
 
@@ -110,6 +110,14 @@ public:
     }
 };
 ~~~
+
+AHHHHHHH...
+
+It is the same logic as my submission code, but doesnt use two pointers.
+
+This is surprisingly more time-efficient than my code...
+
+Next time, I will consider brute force, when I am stuck with two pointers or any relevant techniques...
 
 Time Complexity: $O(n^2)$
 Space Complexity: O(1)
@@ -146,6 +154,10 @@ public:
 };
 ~~~
 
+Used prefix/suffix technique...
+
+Logic-wise, it is basically the same but store maximum data on array, making its time complexity as O(n)
+
 Time Complexity: O(n)
 Space Complexity: O(n)
 
@@ -181,6 +193,10 @@ public:
 };
 ~~~
 
+This uses stack, which technique I will learn next.
+
+So, skip for now...
+
 Time Complexity: O(n)
 Space Complexity: O(n)
 
@@ -196,6 +212,7 @@ public:
         int l = 0, r = height.size() - 1;
         int leftMax = height[l], rightMax = height[r];
         int res = 0;
+
         while (l < r) {
             if (leftMax < rightMax) {
                 l++;
@@ -211,6 +228,14 @@ public:
     }
 };
 ~~~
+
+AHHHHH...
+
+Super efficient code, smart implementation of two pointers.
+
+I should have stored max. height value, not the index...
+
+Other than what to store, other logic is the same...
 
 Time Complexity: O(n)
 Space Complexity: O(1)
