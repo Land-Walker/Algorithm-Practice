@@ -112,11 +112,13 @@ But, I looked at the hints, and found out that stack should rather be used like 
 
 Also, I need to be very careful about stack overflow, as it was main bug that I faced.
 - After looking at a hint, it spent 10-15min to implement it, but spent all other times to debug...
-- This might be because of the its LIFO rule.
+- This might be because of its LIFO rule.
 - More algorithmic approach is required
   - e.g. when this input comes in, what should happen in stack, etc.
 
 I think I need more practice on stack to master it...
+
+But, nice start of stack Qs!
 
 ### What I found out to code the approach
 - How to use stack
