@@ -6,14 +6,20 @@ Difficulty: #medium
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time:
+Start Time: 15:20 (1st Try)
 
-End Time:
+End Time: 15:53 (1st Try)
 
 ## My Approaches
 
 ### Basic Ideas
+Do I have to use stack in this?
+I will try brute force, then try to use stack...
+- Oops never mind, brute force requires $O(n^2)$
+I will use stack...
 
+Okay, had no idea, and way too tired...
+Will come back later and try to solve this with hints from Claude...
 
 ### Submission Code 1 ()
 ~~~cpp
