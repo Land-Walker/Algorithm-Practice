@@ -6,14 +6,25 @@ Difficulty: #medium
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time:
+Start Time: 15:03 (NO IDEA)
 
-End Time:
+End Time: 15:18 (NO IDEA)
 
 ## My Approaches
 
 ### Basic Ideas
+I have no idea how to solve it!
+It is purely first time that I cannot think of anything... 
+(of course, except for brute force...)
 
+Alright, checked the solution titles...
+- Backtracking
+- Dynamic Programming
+
+F*** you neetcode. This is NOT a stack Q...
+- stack is not used in any solution wtf?
+
+Pass for now...
 
 ### Submission Code 1 ()
 ~~~cpp
