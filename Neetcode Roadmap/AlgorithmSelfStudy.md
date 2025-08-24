@@ -202,6 +202,17 @@ Classic Applications
 - Bloom filters and probabilistic data structures
 - Bit manipulation in competitive programming
 
+## Stack
+
+
+
+# Doubly Linked List
+Q150
+
+# Recursion
+Q150
+
+
 # Reference
 https://velog.io/@gb_leem/C-set-maphash
 https://velog.io/@gb_leem/C-list-stack-queue-heap
