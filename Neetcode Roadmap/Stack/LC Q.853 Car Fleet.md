@@ -25,9 +25,30 @@ But, what would be the stack solution?
 Alright. Try to solve it with some help of Claude, but it didnt figure its way out.
 Also, this Q uses Q739 algo, so I will come back after learning how the solution of it works. 
 
-### Submission Code 1 ()
+### Submission Code 1 w. help of Claude (Failed)
 ~~~cpp
+class Solution {
+public:
+    int carFleet(int target, vector<int>& position, vector<int>& speed) {
+        vector<pair<int, int>> cars;
+        stack<double> timeStack;
 
+        for (int i = 0; i < position.size(); ++i) {
+            cars.push_back({position[i], speed[i]});
+        }
+        sort(cars.begin(), cars.end(), greater<pair<int,int>>());
+
+        for (auto p : cars) {
+            double arrivalTime = (target - p.first) / p.second;
+            while (!timeStack.empty() && timeStack.top() > arrivalTime) {
+                timeStack.pop();
+            }
+            timeStack.push(arrivalTime);
+        }
+
+        return timeStack.size();
+    }
+};
 ~~~
 
 ### What I found out to code the approach
