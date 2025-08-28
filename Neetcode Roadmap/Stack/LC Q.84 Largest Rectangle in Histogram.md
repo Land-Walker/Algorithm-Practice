@@ -1,14 +1,14 @@
 # LC Q.84 Largest Rectangle in Histogram
 
-2025.08.27.
+2025.08.27. / 08.28
 
 Difficulty: #hard
 
 Tags: #LeetCode #NeetCodeRoadmap
 
-Start Time: 22:39 (1st Try)
+Start Time: 22:39 (1st Try) / 23:10 (2nd Try)
 
-End Time: 23:32 (1st Try)
+End Time: 23:32 (1st Try) / 24:14 (2nd Try)
 
 ## My Approaches
 
@@ -26,11 +26,47 @@ Nope, that is not what the hint from Neetcode says:
 
 ### Submission Code 1 w. Hints from Claude (Failed)
 ~~~cpp
-if (!stk.empty()) {
-    area = heights[popIndex] * (heights.size() - stk.top() - 1);
-} else {
-    area = heights[popIndex] * heights.size();
-}
+class Solution {
+public:
+  int largestRectangleArea(vector<int>& heights) {
+    stack<int> stk;
+    int res = 0;
+    int area = 0;
+
+    for (int i = 0; i < heights.size(); i++) {
+      while (!stk.empty() && heights[i] < heights[stk.top()]) {
+        int popIndex = stk.top();
+        stk.pop();
+        if (!stk.empty()) {
+          area = heights[popIndex] * (heights.size() - stk.top() - 1);
+          if (area > res) {
+            res = area;
+          }
+        } else {
+          area = heights[popIndex] * heights.size();
+          if (area > res) {
+            res = area;
+          }
+        }
+      }
+        stk.push(i);
+    }
+    while (!stk.empty()) {
+      int popIndex = stk.top();
+      stk.pop();
+      if (!stk.empty()) {)
+        int area = heights[popIndex] * (heights.size() - stk.top() - 1);
+      } else {
+        int area = heights[popIndex] * heights.size();
+      }
+      if (area > res) {
+        res = area;
+      }
+    }
+
+    return res;
+  }
+};
 ~~~
 
 DO NOT use CLAUDE for CODING
@@ -38,6 +74,45 @@ Makes me so confused.
 Will comeback tmr...
 
 still, the main logic is correct, meaning my approach of using Q42 is correct.
+
+### Submission Code 2
+~~~cpp
+class Solution {
+public:
+  int largestRectangleArea(vector<int>& heights) {
+    stack<int> stk;
+    int res = 0;
+    int area = 0;
+    int popIndex = 0;
+
+    for (int i = 0; i < heights.size(); i++) {
+        while (!stk.empty() && heights[i] < heights[stk.top()]) {
+            popIndex = stk.top();
+            stk.pop();
+            area = heights[popIndex] * (i - (stk.empty() ? 0 : popIndex));
+            if (area > res) {
+                res = area;
+            }
+        }
+        stk.push(i);
+    }
+    
+    while (!stk.empty()) {
+        popIndex = stk.top();
+        stk.pop();
+        area = heights[popIndex] * ((stk.empty() ?  heights.size(): popIndex - stk.top()));
+        if (area > res) {
+            res = area;
+        }
+    }
+
+    return res;
+  }
+};
+~~~
+
+Time Complexity: 
+Space Complexity:
 
 ### What I found out to code the approach
 
