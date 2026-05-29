@@ -1,0 +1,10 @@
+# LeetCode 
+# linktoleetcode
+
+maincode
+
+""" 
+Explanation
+
+
+"""
