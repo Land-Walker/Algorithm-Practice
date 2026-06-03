@@ -24,7 +24,7 @@ def first_not_smaller(arr: list[int], target: int) -> int:
     return res
 
 """ 
-Explanation
+Notes
 
 Becareful about what side I need to remove if feasible is True
 """

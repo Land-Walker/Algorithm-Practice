@@ -1,5 +1,5 @@
-// LeetCode 283. Move Zeroes
-// https://leetcode.com/problems/move-zeroes/description/
+# LeetCode 283. Move Zeroes
+# https://leetcode.com/problems/move-zeroes/description/
 
 void moveZeroes(vector<int>& nums) {
     int slow = 0;
@@ -11,6 +11,7 @@ void moveZeroes(vector<int>& nums) {
     }
 }
 
-/* Explanation
+"""
+Notes
 
-*/
+"""

@@ -1,5 +1,5 @@
-// LeetCode 876. Middle of the Linked List
-// https://leetcode.com/problems/middle-of-the-linked-list/description/
+# LeetCode 876. Middle of the Linked List
+# https://leetcode.com/problems/middle-of-the-linked-list/description/
 
 int middle_of_linked_list(Node<int>* head) {
     Node<int>* slow = head;
@@ -11,6 +11,7 @@ int middle_of_linked_list(Node<int>* head) {
     return slow->val;
 }
 
-/* Explanation
+"""
+Notes
 
-*/
+"""

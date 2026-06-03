@@ -29,7 +29,7 @@ def find_first_occurrence(arr: list[int], target: int) -> int:
     return res
 
 """ 
-Explanation
+Notes
 
 You have to seperate equality condition and inequality conditions
 You can simply remove right when equality is satisfied
